@@ -1,0 +1,94 @@
+body{
+	background: #fafafa;
+}
+
+.alert-light{
+	border-color: #bfbfbf;
+}
+
+.form-register{
+	max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.form-register .logo{
+	margin-bottom: 20px;
+}
+
+.form-register .logo img {
+	max-width: 100px;
+}
+
+.form-register ul.errorlist{
+	color: #ca5858;
+	font-weight: bold;
+}
+.form-register .btn-primary {
+	width: 100%;
+}
+.form-register input textarea {
+	margin-bottom: 15px;
+}
+
+.form-register.auth {
+	max-width: 400px;
+	margin: 100px auto;
+	padding: 20px;
+	text-align: center;
+}
+
+.form-register.auth ul.errorlist {
+	color: #ca5858;
+	font-weight: bold;
+}
+
+/* .form-register.auth label {
+	display: none;
+} */
+
+.form-register.auth input {
+	width: 100%;
+	margin-bottom: 15px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+.form-register.auth .btn-primary {
+	width: 100%;
+	padding: 10px;
+	background-color: #007bff;
+	border: none;
+	border-radius: 4px;
+	color: #fff;
+	cursor: pointer;
+}
+
+.form-register.auth .btn-primary:hover {
+	background-color: #0056b3;
+}
+
+.form-register.auth .zab{
+	font-size: 0.80em;
+}
+
+.items{
+	width:90%;
+	margin:0px auto;
+	margin-top: 10px;
+}
+.img-container {
+	overflow: hidden;
+}
+
+.img-container img {
+	object-fit: contain;
+}
+
+footer{
+	width: 70%;
+	margin-left:15% ;
+}
+

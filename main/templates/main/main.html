@@ -1,0 +1,77 @@
+{% extends "main/base.html" %} 
+{% block title %}
+	{{title}}
+{% endblock %}
+
+{% block maincontent %}
+<section class="py-5">
+  <div class="container px-4 px-lg-5 ">
+      <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        {% for post in content %}
+          <div class="col mb-5">
+              <div class="card h-100">
+                  <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
+                  <!-- Product image-->
+                  <img class="card-img-top" src="{{ post.img_content.url}}" alt="Image" style="height: 200px; width: 100%; object-fit: contain;">
+                  <!-- Product details-->
+                  <div class="card-body p-4">
+                      <div class="text-center">
+                          <!-- Product name-->
+                          <h5 class="fw-bolder">{{ post.title|truncatechars:25}}</h5>
+                          <!-- Product price-->
+                          <p>{{ post.material_number }}</p>
+                          {% if post.old_price %}
+                            <span class="text-muted"> Скидка: {{ post.date|date:"d E Y, H:i" }}</span>
+                            <p><s>₸{{ post.old_price }}</s> ₸{{ post.price }}</p>
+                          {% else %}
+                            <p>₸{{ post.price }}</p>
+                          {% endif %}
+                      </div>
+                  </div>
+                  <!-- Product actions-->
+                  <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                      <div class="text-center">
+                        <a class="btn btn-outline-dark mt-auto" href="{% url 'content-detail' post.id %}">Подробнее</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      {% endfor %}
+      </div>
+  </div>
+</section>
+
+<nav aria-label="pagination">
+  <ul class="pagination justify-content-center">
+		{% if is_paginated %}
+			{% if page_obj.has_previous %}
+				<li class="page-item"></li>
+				<a href="?page={{ page_obj.previous_page_number }}" class="page-link" aria-label="Previous">
+					<span aria-hidden="true">«</span>
+				</a>
+			{% endif %}
+
+			{% for num in page_obj.paginator.page_range %}
+				{% if num == page_obj.number %}
+				<li class="page-item">
+					<button class="page-link">{{num}}</button>
+				</li>
+				{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+				<li class="page-item">
+					<a href="?page={{ num }}" class="page-link">{{ num }}</a>
+				</li>
+				{% endif %}
+			{% endfor %}
+
+			{% if page_obj.has_next %}
+			<li class="page-item">
+				<a href="?page={{ page_obj.next_page_number }}" class="page-link" aria-label="Next">
+					<span aria-hidden="true">»</span>
+				</a>
+			</li>
+			{% endif %}
+		{% endif %}
+	</ul>
+</nav>
+
+{% endblock %}

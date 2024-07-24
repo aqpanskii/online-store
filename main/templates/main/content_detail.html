@@ -1,0 +1,46 @@
+{% extends "main/base.html" %} 
+{% block title %}
+	{{title}}
+{% endblock %}
+
+{% block maincontent %}
+<div class="col">
+  <div class="card">
+    <div class="row g-0 justify-content-center items">
+        <div class="img-container col-4">
+					<img class="bd-placeholder-img" width="100%" height="250" role="img" aria-label="Placeholder: Image" preserveAspectRatio="xMidYMid slice" focusable="true" src="{{ object.img_content.url}}">
+				</div>
+				{% if object.images.exists %}
+					{% for image in content.images.all %}
+						<div class="img-container col-4">
+								<img class="bd-placeholder-img" width="100%" height="250" role="img" src="{{ image.image.url }}" alt="{{ image.alt_text }}" focusable="true">
+						</div>
+					{% endfor %}
+				{% endif %}
+    </div>
+		<div class="row g-1 justify-content-center text-align-center">
+			<div class="card-body">
+				<h3>{{ object.title}}</h3>
+				<p>Номер материала: {{object.material_number}}</p>
+				<p>{{object.text|safe}}</p>
+				{% if object.old_price %}
+					<span class="text-muted"> Скидка до: {{object.date|date:"d E Y, H:i"}}</span>
+					<p><b>Цена: </b><s>₸{{object.old_price}}</s> <mark>₸{{object.price}}</mark></p>
+				{% else %}
+					<p><b>Цена:<mark>₸{{object.price}}</mark></p>
+				{% endif %}
+				<hr>
+				{% if perms.main.change_content %}
+					<a href="{% url 'content-update' object.id %}" class="btn btn-info">Обновить товар</a>
+				{% endif %}
+				{% if perms.main.delete_content %}
+					<a href="{% url 'content-delete' object.id %}" class="btn btn-danger">Удалить товар</a>
+				{% endif %}
+				<a href="{% url 'ar' %}" class="btn btn-info">AR</a>
+				<a href="{% url 'home-page' %}" class="btn btn-secondary">Назад</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
