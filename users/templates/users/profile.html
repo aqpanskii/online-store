@@ -1,0 +1,70 @@
+{% extends "main/base.html" %} 
+
+{% block title %}
+    Кабинет пользователя
+{% endblock %}
+
+{% block maincontent %}
+<div class="container">
+	<div class="main-body">
+		<h1>Кабинет пользователя</h1>
+		<div class="row gutters-sm">
+			<div class="col-md-4 mb-3">
+				<div class="card">
+					<div class="card-body">
+						<div class="d-flex flex-column align-items-center text-center">
+							<img src="{{user.profile.img.url}}" alt="Profile image" class="rounded-circle" width="150">
+							<div class="mt-3">
+								<h4>{{ user.username }}</h4>
+								<p class="text-muted font-size-sm">{{user.profile.address}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="card mb-3">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-sm-3">
+								<h6 class="mb-0">Полное имя</h6>
+							</div>
+							<div class="col-sm-9 text-secondary">
+								{{ user.first_name }} {{ user.last_name }}
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-3">
+								<h6 class="mb-0">Email</h6>
+							</div>
+							<div class="col-sm-9 text-secondary">
+								{{user.email}}
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-3">
+								<h6 class="mb-0">Номер</h6>
+							</div>
+							<div class="col-sm-9 text-secondary">
+								{{user.profile.phone_number}}
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-3">
+								<h6 class="mb-0">Адрес</h6>
+							</div>
+							<div class="col-sm-9 text-secondary">
+								{{user.profile.address}}
+							</div>
+						</div>
+						<hr>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}	

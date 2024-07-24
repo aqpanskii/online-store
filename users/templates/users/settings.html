@@ -1,0 +1,27 @@
+{% extends "main/base.html" %} 
+
+{% block title %}
+    Кабинет пользователя
+{% endblock %}
+
+{% block maincontent %}
+<div class="container">
+	<div class="main-body">
+		<h1>Настройки пользователя {{ user.username }}</h1>
+		<div class="row gutters-sm">
+				<div class="col">
+					<div class="col-sm-12">
+						<form id="updateProfileForm" method="post" enctype="multipart/form-data" class="form-register mt-4">
+							{% csrf_token %}
+							<h4>Обновить профиль</h4>
+							{{ updateUserForm.as_p }}<!--  данные -->
+							{{ updateProfileForm.as_p }}
+							{{ profileForm.as_p }}<!--  фото -->
+							<button class="btn btn-outline-warning" type="submit">Обновить</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}	

@@ -1,0 +1,16 @@
+{% extends "main/base.html" %} 
+
+{% block title %}
+	{{title}}
+{% endblock %}
+
+{% block maincontent %}
+	<form method="post" class="form-register">
+		<h3>{{title}}</h3>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button class="btn btn-primary" type="submit">Зарегистрироваться</button>
+		<hr>
+		<p><a href="{% url 'user' %}">Уже зарегистрированы?</a></p>
+	</form>
+{% endblock %}

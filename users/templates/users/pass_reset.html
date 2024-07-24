@@ -1,0 +1,23 @@
+{% extends "main/base.html" %} 
+
+{% block title %}
+	Восстановление пароля
+{% endblock %}
+
+{% block maincontent %}
+	<h1>Восстановление пароля</h1>
+	<form method="post" class="form-register auth">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button class="btn btn-danger" type="submit">Запросить новый пароль</button>
+	</form>
+{% endblock %}
+
+{% block aside-block %}
+	<h3>Address</h3>
+	<img src="https://avatars.mds.yandex.net/get-altay/1660410/2a00000169996a4ef3865c9cb8a0f485138f/L_height" class="img-thumbnail">
+	<p>Tekled by Teksan ( Теклед бай Тексан), проспект Рыскулова 99, Алматы 050015</p>
+	<a href="https://www.google.com/maps/place/Tekled+by+Teksan+(+%D0%A2%D0%B5%D0%BA%D0%BB%D0%B5%D0%B4+%D0%B1%D0%B0%D0%B9+%D0%A2%D0%B5%D0%BA%D1%81%D0%B0%D0%BD)/@43.2750122,76.889525,17z/data=!3m1!4b1!4m6!3m5!1s0x38836bc320c22af7:0x5d97cbb42f0751ce!8m2!3d43.2750083!4d76.8921053!16s%2Fg%2F11b6g9kqq1?entry=ttu" target="_blank" >
+	<button class="btn btn-warning">Maps</button>
+	</a>
+{%endblock %}

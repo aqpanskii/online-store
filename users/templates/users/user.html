@@ -1,0 +1,17 @@
+{% extends "main/base.html" %} 
+
+{% block title %}
+	Страница авторизации
+{% endblock %}
+
+{% block maincontent %}
+	<h1>Aвторизации</h1>
+	<form method="post" class="form-register auth">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<p class="zab">Забыли пароль? <a href="{% url 'pass-reset' %}">Восстановить</a></p>
+		<button class="btn btn-primary" type="submit">Войти</button>
+		<hr>
+		<p>Нет аккаунта? <a href="{% url 'reg' %}">Регистрация</a></p>
+	</form>
+{% endblock %}
